@@ -71,7 +71,7 @@ def f_sort_rating_tuple(dict_rating):
 data_header = "id|item_id|rating|timestamp"
 
 dict_data = f_carregar_dataset(
-    "ml-100k/u.data", header_sep="|", sep="\t", header=data_header)
+    "../ml-100k/u.data", header_sep="|", sep="\t", header=data_header)
 
 # transformar atributo rating de string para int
 
@@ -123,11 +123,11 @@ dict_rating_movie = f_rating_estimator("item_id")
 tuple_sorted_rating_movie = f_sort_rating_tuple(dict_rating_movie)
 
 # Top 5 piores
-for user in tuple_sorted_rating_user[0:5]:
+for user in tuple_sorted_rating_movie[0:5]:
     print(f"Movie {user[1]} rating {'%.3f' % user[0]}")
 
 # Top 5 melhores
-for user in tuple_sorted_rating_user[-5:]:
+for user in tuple_sorted_rating_movie[-5:]:
     print(f"Movie {user[1]} rating {'%.3f' % user[0]}")
 
 # %% Exercício 4 - Media de avaliação para cada genero
@@ -140,7 +140,7 @@ genres = genres.split("|")
 item_info_header = "movie_id|movie_title|release_date|video_release_date|IMDb_URL|unknown|Action|Adventure|Animation|Children's|Comedy|Crime|Documentary|Drama|Fantasy|Film-Noir|Horror|Musical|Mystery|Romance|Sci-Fi|Thriller|War|Western"
 
 dict_item_info = f_carregar_dataset(
-    "ml-100k/u.item", header_sep="|", sep="|", header=item_info_header)
+    "../ml-100k/u.item", header_sep="|", sep="|", header=item_info_header)
 
 
 def f_rating_estimator_genre():
@@ -226,7 +226,7 @@ print(f"Max year {max_year[1]} rating {'%.3f' % max_year[0]}")
 user_info_header = "user_id|age|gender|occupation|zip_code"
 
 dict_user_info = f_carregar_dataset(
-    "ml-100k/u.user", header_sep="|", sep="|", header=user_info_header)
+    "../ml-100k/u.user", header_sep="|", sep="|", header=user_info_header)
 
 
 def f_rating_estimator_ocupation():
